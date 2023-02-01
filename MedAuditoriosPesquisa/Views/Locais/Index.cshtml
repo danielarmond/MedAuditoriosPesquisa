@@ -1,0 +1,89 @@
+﻿@model IEnumerable<MedAuditoriosPesquisa.Models.Local>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Filial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInteracao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PeDireito)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCadeira)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusPrimario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusSecundario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkVisita)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInteracao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PeDireito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCadeira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusPrimario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusSecundario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkVisita)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

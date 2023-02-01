@@ -1,9 +1,16 @@
-﻿namespace MedAuditoriosPesquisa.Models.Enums
+﻿using System.ComponentModel;
+
+namespace MedAuditoriosPesquisa.Models.Enums
 {
     public enum Funcao
     {
-        usuario,
-        gestor,
-        administrador
+        [Description("Usuário")]
+        Usuario,
+
+        [Description("Gestor")]
+        Gestor,
+
+        [Description("Administrador")]
+        Administrador
     }
 }
