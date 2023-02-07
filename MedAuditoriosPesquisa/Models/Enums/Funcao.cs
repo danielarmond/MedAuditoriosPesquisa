@@ -4,8 +4,8 @@ namespace MedAuditoriosPesquisa.Models.Enums
 {
     public enum Funcao
     {
-        [Description("Usuário")]
-        Usuario,
+        [Description("Auxiliar")]
+        Auxiliar,
 
         [Description("Gestor")]
         Gestor,

@@ -6,11 +6,11 @@
 
 }
 
-<h1>Locais</h1>
+<h1>Lista de Locais</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="col-3">
+    <a class="btn btn-success" a asp-action="Create">Novo Local</a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -81,9 +81,9 @@
                 @Html.DisplayFor(modelItem => item.LinkVisita)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detailhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
             </td>
         </tr>
 }
