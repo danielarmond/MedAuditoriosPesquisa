@@ -15,5 +15,10 @@ namespace MedAuditoriosPesquisa.Data
         public DbSet<Local> Local { get; set; }
         
         public DbSet<Usuario> Usuario { get; set; }
+
+        public DbSet<StatusPrimario> StatusPrimario { get; set; }
+
+        public DbSet<StatusSecundario> StatusSecundario { get; set; }
+
     }
 }

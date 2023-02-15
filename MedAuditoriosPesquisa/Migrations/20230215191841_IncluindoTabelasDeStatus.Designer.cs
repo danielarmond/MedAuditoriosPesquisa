@@ -3,6 +3,7 @@ using System;
 using MedAuditoriosPesquisa.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedAuditoriosPesquisa.Migrations
 {
     [DbContext(typeof(MedAuditoriosPesquisaContext))]
-    partial class MedAuditoriosPesquisaContextModelSnapshot : ModelSnapshot
+    [Migration("20230215191841_IncluindoTabelasDeStatus")]
+    partial class IncluindoTabelasDeStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
