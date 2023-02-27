@@ -2,16 +2,24 @@
 using Microsoft.EntityFrameworkCore;
 using MedAuditoriosPesquisa.Data;
 using MedAuditoriosPesquisa.Models;
+using MedAuditoriosPesquisa.Models.ViewModels;
+using MedAuditoriosPesquisa.Services;
 
 namespace MedAuditoriosPesquisa.Controllers
 {
     public class LocaisController : Controller
     {
         private readonly MedAuditoriosPesquisaContext _context;
+        private readonly StatusPrimarioService _statusPrimarioService;
+        private readonly StatusSecundarioService _statusSecundarioService;
 
-        public LocaisController(MedAuditoriosPesquisaContext context)
+
+        public LocaisController(MedAuditoriosPesquisaContext context, StatusSecundarioService statusSecundarioService, StatusPrimarioService statusPrimarioService)
         {
             _context = context;
+            _statusSecundarioService = statusSecundarioService;
+            _statusPrimarioService = statusPrimarioService;
+
         }
 
         // GET: Locais
@@ -41,7 +49,10 @@ namespace MedAuditoriosPesquisa.Controllers
         // GET: Locais/Create
         public IActionResult Create()
         {
-            return View();
+            var statusPrimarios = _statusPrimarioService.FindAll();
+            var statusSecundarios = _statusSecundarioService.FindAll();
+            var viewModel = new LocalFormViewModel { StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios };
+            return View(viewModel);
         }
 
         // POST: Locais/Create

@@ -1,4 +1,5 @@
 using MedAuditoriosPesquisa.Data;
+using MedAuditoriosPesquisa.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("MedAuditoriosPesquisaContext");
 builder.Services.AddDbContext<MedAuditoriosPesquisaContext>(opts =>
 opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddScoped<StatusPrimarioService>();
+builder.Services.AddScoped<StatusSecundarioService>();
 
 builder.Services.AddRazorPages();
 

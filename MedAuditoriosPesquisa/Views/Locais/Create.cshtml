@@ -1,4 +1,4 @@
-﻿@model MedAuditoriosPesquisa.Models.Local
+﻿@model MedAuditoriosPesquisa.Models.ViewModels.LocalFormViewModel;
 @using MedAuditoriosPesquisa.Models.Enums
 
 @{
@@ -16,57 +16,55 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Filial" class="control-label"></label>
-                <input asp-for="Filial" class="form-control" />
-                <span asp-validation-for="Filial" class="text-danger"></span>
+                <label asp-for="Local.Filial" class="control-label"></label>
+                <input asp-for="Local.Filial" class="form-control" />
+                <span asp-validation-for="Local.Filial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+                <label asp-for="Local.Nome" class="control-label"></label>
+                <input asp-for="Local.Nome" class="form-control" />
+                <span asp-validation-for="Local.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataInteracao" class="control-label"></label>
-                <input asp-for="DataInteracao" class="form-control" />
-                <span asp-validation-for="DataInteracao" class="text-danger"></span>
+                <label asp-for="Local.DataInteracao" class="control-label"></label>
+                <input asp-for="Local.DataInteracao" class="form-control" />
+                <span asp-validation-for="Local.DataInteracao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Capacidade" class="control-label"></label>
-                <input asp-for="Capacidade" class="form-control" />
-                <span asp-validation-for="Capacidade" class="text-danger"></span>
+                <label asp-for="Local.Capacidade" class="control-label"></label>
+                <input asp-for="Local.Capacidade" class="form-control" />
+                <span asp-validation-for="Local.Capacidade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PeDireito" class="control-label"></label>
-                <input asp-for="PeDireito" class="form-control" />
-                <span asp-validation-for="PeDireito" class="text-danger"></span>
+                <label asp-for="Local.PeDireito" class="control-label"></label>
+                <input asp-for="Local.PeDireito" class="form-control" />
+                <span asp-validation-for="Local.PeDireito" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoCadeira" class="control-label"></label>
-                <select asp-for="TipoCadeira" class="form-control" asp-items="Html.GetEnumSelectList<TipoCadeira>()">
+                <label asp-for="Local.TipoCadeira" class="control-label"></label>
+                <select asp-for="Local.TipoCadeira" class="form-control" asp-items="Html.GetEnumSelectList<TipoCadeira>()">
                     class="form-control"
                     <option selected="selected" value="">Selecione o tipo de Cadeira</option>
                 </select>
-                <span asp-validation-for="TipoCadeira" class="text-danger"></span>
+                <span asp-validation-for="Local.TipoCadeira" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StatusPrimario" class="control-label"></label>
-                <select asp-for="StatusPrimario" class="form-control"></select>
-                <span asp-validation-for="StatusPrimario" class="text-danger"></span>
+                <label asp-for="Local.StatusPrimarioId" class="control-label"></label>
+                <select asp-for="Local.StatusPrimarioId" asp-items="@(new SelectList(Model.StatusPrimarios,"Id","Nome"))" class="form-control"></select>
             </div>
             <div class="form-group">
-                <label asp-for="StatusSecundario" class="control-label"></label>
-                <select asp-for="StatusSecundario" class="form-control"></select>
-                <span asp-validation-for="StatusSecundario" class="text-danger"></span>
+                <label asp-for="Local.StatusSecundarioId" class="control-label"></label>
+                <select asp-for="Local.StatusSecundarioId" asp-items="@(new SelectList(Model.StatusSecundarios,"Id","Nome"))" class="form-control"></select>
             </div>
             <div class="form-group">
-                <label asp-for="LinkVisita" class="control-label"></label>
-                <input asp-for="LinkVisita" class="form-control" />
-                <span asp-validation-for="LinkVisita" class="text-danger"></span>
+                <label asp-for="Local.LinkVisita" class="control-label"></label>
+                <input asp-for="Local.LinkVisita" class="form-control" />
+                <span asp-validation-for="Local.LinkVisita" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Observacao" class="control-label"></label>
-                <input asp-for="Observacao" class="form-control" />
-                <span asp-validation-for="Observacao" class="text-danger"></span>
+                <label asp-for="Local.Observacao" class="control-label"></label>
+                <input asp-for="Local.Observacao" class="form-control" />
+                <span asp-validation-for="Local.Observacao" class="text-danger"></span>
             </div>           
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

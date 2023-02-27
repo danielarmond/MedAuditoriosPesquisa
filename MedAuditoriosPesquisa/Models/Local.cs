@@ -20,7 +20,11 @@ namespace MedAuditoriosPesquisa.Models
         [Required]
         public StatusPrimario StatusPrimario { get; set; }
         [Required]
+        public int StatusPrimarioId { get; set; }
+        [Required]
         public StatusSecundario StatusSecundario { get; set; }
+        [Required]
+        public int StatusSecundarioId { get; set; }
         public Contato Contato { get; set; }
         public string Observacao { get; set; }
         public string LinkVisita { get; set; }
