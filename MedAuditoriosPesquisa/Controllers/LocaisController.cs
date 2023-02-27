@@ -4,6 +4,7 @@ using MedAuditoriosPesquisa.Data;
 using MedAuditoriosPesquisa.Models;
 using MedAuditoriosPesquisa.Models.ViewModels;
 using MedAuditoriosPesquisa.Services;
+using System.Diagnostics;
 
 namespace MedAuditoriosPesquisa.Controllers
 {
@@ -12,20 +13,21 @@ namespace MedAuditoriosPesquisa.Controllers
         private readonly MedAuditoriosPesquisaContext _context;
         private readonly StatusPrimarioService _statusPrimarioService;
         private readonly StatusSecundarioService _statusSecundarioService;
+        private readonly LocalService _localService;
 
 
-        public LocaisController(MedAuditoriosPesquisaContext context, StatusSecundarioService statusSecundarioService, StatusPrimarioService statusPrimarioService)
+        public LocaisController(MedAuditoriosPesquisaContext context, StatusSecundarioService statusSecundarioService, StatusPrimarioService statusPrimarioService, LocalService localService)
         {
             _context = context;
             _statusSecundarioService = statusSecundarioService;
             _statusPrimarioService = statusPrimarioService;
-
+            _localService= localService;
         }
 
         // GET: Locais
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Local.ToListAsync());
+            return View(_localService.FindAll().ToList());
         }
 
         // GET: Locais/Details/5
@@ -36,14 +38,14 @@ namespace MedAuditoriosPesquisa.Controllers
                 return NotFound();
             }
 
-            var local = await _context.Local
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (local == null)
+            var obj = _localService.FindById(id.Value);
+                
+            if (obj == null)
             {
                 return NotFound();
             }
 
-            return View(local);
+            return View(obj);
         }
 
         // GET: Locais/Create
@@ -60,31 +62,33 @@ namespace MedAuditoriosPesquisa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Filial,Nome,DataInteracao,Capacidade,PeDireito,TipoCadeira,StatusPrimario,StatusSecundario,Observacao,LinkVisita")] Local local)
+        public async Task<IActionResult> Create(Local local)
         {
-            if (ModelState.IsValid)
-            {
                 _context.Add(local);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(local);
+            
         }
 
         // GET: Locais/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Local == null)
+            if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
-            var local = await _context.Local.FindAsync(id);
-            if (local == null)
+            var obj = _localService.FindById(id.Value);
+            if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
-            return View(local);
+
+            List<StatusPrimario> statusPrimarios = _statusPrimarioService.FindAll();
+            List<StatusSecundario> statusSecundarios = _statusSecundarioService.FindAll();
+
+            LocalFormViewModel viewModel = new LocalFormViewModel { Local = obj, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios };
+            return View(viewModel);
         }
 
         // POST: Locais/Edit/5
@@ -92,15 +96,13 @@ namespace MedAuditoriosPesquisa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Filial,Nome,DataInteracao,Capacidade,PeDireito,TipoCadeira,StatusPrimario,StatusSecundario,Observacao,LinkVisita")] Local local)
+        public async Task<IActionResult> Edit(int id, Local local)
         {
             if (id != local.Id)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
-            {
+                        
                 try
                 {
                     _context.Update(local);
@@ -118,8 +120,7 @@ namespace MedAuditoriosPesquisa.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            return View(local);
+            
         }
 
         // GET: Locais/Delete/5
@@ -162,6 +163,16 @@ namespace MedAuditoriosPesquisa.Controllers
         private bool LocalExists(int id)
         {
           return _context.Local.Any(e => e.Id == id);
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }

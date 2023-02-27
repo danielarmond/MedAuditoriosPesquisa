@@ -25,7 +25,6 @@ namespace MedAuditoriosPesquisa.Models
         public StatusSecundario StatusSecundario { get; set; }
         [Required]
         public int StatusSecundarioId { get; set; }
-        public Contato Contato { get; set; }
         public string Observacao { get; set; }
         public string LinkVisita { get; set; }
 
@@ -35,7 +34,7 @@ namespace MedAuditoriosPesquisa.Models
 
         public Local(string filial, string nome, DateTime dataInteracao, int capacidade, int peDireito, 
             TipoCadeira tipoCadeira, StatusPrimario statusPrimario, StatusSecundario statusSecundario, 
-            Contato contato, string observacao, string linkVisita)
+            string observacao, string linkVisita)
         {
             Filial = filial;
             Nome = nome;
@@ -45,7 +44,6 @@ namespace MedAuditoriosPesquisa.Models
             TipoCadeira = tipoCadeira;
             StatusPrimario = statusPrimario;
             StatusSecundario = statusSecundario;
-            Contato = contato;
             Observacao = observacao;
             LinkVisita = linkVisita;
         }

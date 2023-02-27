@@ -10,6 +10,9 @@ opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddScoped<StatusPrimarioService>();
 builder.Services.AddScoped<StatusSecundarioService>();
+builder.Services.AddScoped<ContatoService>();
+builder.Services.AddScoped<LocalService>();
+
 
 builder.Services.AddRazorPages();
 
