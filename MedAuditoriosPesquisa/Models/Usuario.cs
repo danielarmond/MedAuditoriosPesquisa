@@ -11,6 +11,7 @@ namespace MedAuditoriosPesquisa.Models
         [Required]
         public string Nome { get; set; }
         [Required]
+        [Display(Name = "Função")]
         public Funcao Funcao { get; set; }
         [Required]
         public string Email { get; set; }

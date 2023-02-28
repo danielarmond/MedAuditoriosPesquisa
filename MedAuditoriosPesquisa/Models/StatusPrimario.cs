@@ -8,6 +8,7 @@ namespace MedAuditoriosPesquisa.Models
         [Required]
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Status Primário")]
         public string Nome { get; set; }
     }
 }
