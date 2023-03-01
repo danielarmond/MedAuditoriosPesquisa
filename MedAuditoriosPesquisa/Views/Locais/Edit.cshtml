@@ -7,9 +7,7 @@
 
 }
 
-<h1>Edit</h1>
-
-<h4>Local</h4>
+<h3>Editar Local</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -43,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Local.TipoCadeira" class="control-label"></label>
-                <select asp-for="Local.TipoCadeira" class="form-control" asp-items="Html.GetEnumSelectList<TipoCadeira>()">
+                <select asp-for="Local.TipoCadeira" class="form-select" asp-items="Html.GetEnumSelectList<TipoCadeira>()">
                     class="form-control"
                     <option selected="selected" value="">Selecione o tipo de Cadeira</option>
                 </select>
@@ -51,11 +49,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Local.StatusPrimarioId" class="control-label"></label>
-                <select asp-for="Local.StatusPrimarioId" asp-items="@(new SelectList(Model.StatusPrimarios,"Id","Nome"))" class="form-control"></select>
+                <select asp-for="Local.StatusPrimarioId" asp-items="@(new SelectList(Model.StatusPrimarios,"Id","Nome"))" class="form-select"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Local.StatusSecundarioId" class="control-label"></label>
-                <select asp-for="Local.StatusSecundarioId" asp-items="@(new SelectList(Model.StatusSecundarios,"Id","Nome"))" class="form-control"></select>
+                <select asp-for="Local.StatusSecundarioId" asp-items="@(new SelectList(Model.StatusSecundarios,"Id","Nome"))" class="form-select"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Local.Observacao" class="control-label"></label>
@@ -67,8 +65,9 @@
                 <input asp-for="Local.LinkVisita" class="form-control" />
                 <span asp-validation-for="Local.LinkVisita" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div style="width:500px;">
+                <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;" />Cancelar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" style="margin:5px;" />
             </div>
         </form>
     </div>

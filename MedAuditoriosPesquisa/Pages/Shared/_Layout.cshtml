@@ -10,22 +10,30 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">MedAuditorios - Pesquisa</a>
+                <a class="navbar-brand" href="/">
+                        <img src="./img/medgestauditorios.png" class="img-fluid" alt="" width="110">
+                </a>               
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
 
                        <li><a class="nav-link text-dark" asp-area="" asp-controller="/Locais" asp-action="Index">Locais</a></li>
                        <li><a class="nav-link text-dark" asp-area="" asp-controller="/Contatos" asp-action="Index">Contatos</a></li>
-                       <li><a class="nav-link text-dark" asp-area="" asp-controller="/Usuarios" asp-action="Index">Usuários</a></li>
-                       <li><a class="nav-link text-dark" asp-area="" asp-controller="/StatusPrimarios" asp-action="Index">Status Primários</a></li>
-                       <li><a class="nav-link text-dark" asp-area="" asp-controller="/StatusSecundarios" asp-action="Index">Status Secundários</a></li>
-
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrador</a>
+                            <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-area="" asp-controller="/Usuarios" asp-action="Index">Usuários</a>
+                       <a class="dropdown-item" asp-area="" asp-controller="/StatusPrimarios" asp-action="Index">Status Primários</a>
+                       <a class="dropdown-item" asp-area="" asp-controller="/StatusSecundarios" asp-action="Index">Status Secundários</a>
+                           
+                   </div>
+                        </li>
                     </ul>
                 </div>
             </div>

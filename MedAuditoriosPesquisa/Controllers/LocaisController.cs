@@ -174,5 +174,6 @@ namespace MedAuditoriosPesquisa.Controllers
             };
             return View(viewModel);
         }
+    
     }
 }
