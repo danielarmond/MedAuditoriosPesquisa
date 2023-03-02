@@ -6,9 +6,9 @@
 
 }
 
-<h1>Delete</h1>
+<h2>Excluir</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja apagar este registro?</h3>
 <div>
     <h4>StatusPrimario</h4>
     <hr />
@@ -22,8 +22,9 @@
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <div style="width:500px;">
+            <a asp-action="Index" value="Cancelar" class="btn btn-primary" style="margin:5px;" />Cancelar</a>
+            <input type="submit" value="Excluir" class="btn btn-danger" style="margin:5px;" />
+        </div>
     </form>
 </div>

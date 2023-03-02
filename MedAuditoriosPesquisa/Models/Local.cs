@@ -37,14 +37,16 @@ namespace MedAuditoriosPesquisa.Models
         [Display(Name = "Link da Visita")]
         [DataType(DataType.Url)]
         public string LinkVisita { get; set; }
+        [Display(Name = "Imagem")]
+        public string UrlImagem  {get; set; }
 
-        public Local()
+    public Local()
         {
         }
 
         public Local(string filial, string nome, DateTime dataInteracao, int capacidade, int peDireito, 
             TipoCadeira tipoCadeira, StatusPrimario statusPrimario, StatusSecundario statusSecundario, 
-            string observacao, string linkVisita)
+            string observacao, string linkVisita, string urlImagem)
         {
             Filial = filial;
             Nome = nome;
@@ -56,6 +58,7 @@ namespace MedAuditoriosPesquisa.Models
             StatusSecundario = statusSecundario;
             Observacao = observacao;
             LinkVisita = linkVisita;
+            UrlImagem = urlImagem;
         }
     }
 }

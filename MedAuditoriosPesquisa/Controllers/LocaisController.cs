@@ -131,14 +131,14 @@ namespace MedAuditoriosPesquisa.Controllers
                 return NotFound();
             }
 
-            var local = await _context.Local
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (local == null)
+            var obj = _localService.FindById(id.Value);
+
+            if (obj == null)
             {
                 return NotFound();
             }
 
-            return View(local);
+            return View(obj);
         }
 
         // POST: Locais/Delete/5

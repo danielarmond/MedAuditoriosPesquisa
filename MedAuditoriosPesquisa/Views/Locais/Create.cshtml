@@ -50,20 +50,25 @@
             <div class="form-group">
                 <label asp-for="Local.StatusPrimarioId" class="control-label"></label>
                 <select asp-for="Local.StatusPrimarioId" asp-items="@(new SelectList(Model.StatusPrimarios,"Id","Nome"))" class="form-select"></select>
+                <span asp-validation-for="Local.StatusPrimarioId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Local.StatusSecundarioId" class="control-label"></label>
                 <select asp-for="Local.StatusSecundarioId" asp-items="@(new SelectList(Model.StatusSecundarios,"Id","Nome"))" class="form-select"></select>
+                <span asp-validation-for="Local.StatusSecundarioId" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <label asp-for="Local.LinkVisita" class="control-label"></label>
                 <input asp-for="Local.LinkVisita" class="form-control" />
-                <span asp-validation-for="Local.LinkVisita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Local.UrlImagem" class="control-label"></label>
+                <input asp-for="Local.UrlImagem" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Local.Observacao" class="control-label"></label>
                 <textarea asp-for="Local.Observacao" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Local.Observacao" class="text-danger"></span>
             </div>
 
 

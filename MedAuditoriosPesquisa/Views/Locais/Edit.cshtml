@@ -65,6 +65,11 @@
                 <input asp-for="Local.LinkVisita" class="form-control" />
                 <span asp-validation-for="Local.LinkVisita" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Local.UrlImagem" class="control-label"></label>
+                <input asp-for="Local.UrlImagem" class="form-control" />
+                <span asp-validation-for="Local.UrlImagem" class="text-danger"></span>
+            </div>
             <div style="width:500px;">
                 <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;" />Cancelar</a>
                 <input type="submit" value="Salvar" class="btn btn-primary" style="margin:5px;" />
@@ -73,9 +78,6 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
