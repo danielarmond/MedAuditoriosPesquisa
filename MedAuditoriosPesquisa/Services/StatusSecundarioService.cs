@@ -1,5 +1,6 @@
 ﻿using MedAuditoriosPesquisa.Data;
 using MedAuditoriosPesquisa.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedAuditoriosPesquisa.Services
 {
@@ -12,9 +13,9 @@ namespace MedAuditoriosPesquisa.Services
             _context = context;
         }
 
-        public List<StatusSecundario> FindAll()
+        public async Task<List<StatusSecundario>> FindAllAsync()
         {
-            return _context.StatusSecundario.OrderBy(x => x.Nome).ToList();
+            return await _context.StatusSecundario.OrderBy(x => x.Nome).ToListAsync();
         }
     }
 }
