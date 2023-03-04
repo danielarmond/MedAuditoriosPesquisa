@@ -42,7 +42,7 @@ namespace MedAuditoriosPesquisa.Services
                 _context.Local.Remove(obj);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException dbUpdateException)
             {
                 throw new IntegrityException("Não é possível excluir");
             }

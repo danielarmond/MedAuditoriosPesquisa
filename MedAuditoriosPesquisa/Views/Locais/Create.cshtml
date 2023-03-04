@@ -50,12 +50,10 @@
             <div class="form-group">
                 <label asp-for="Local.StatusPrimarioId" class="control-label"></label>
                 <select asp-for="Local.StatusPrimarioId" asp-items="@(new SelectList(Model.StatusPrimarios,"Id","Nome"))" class="form-select"></select>
-                <span asp-validation-for="Local.StatusPrimarioId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Local.StatusSecundarioId" class="control-label"></label>
                 <select asp-for="Local.StatusSecundarioId" asp-items="@(new SelectList(Model.StatusSecundarios,"Id","Nome"))" class="form-select"></select>
-                <span asp-validation-for="Local.StatusSecundarioId" class="text-danger"></span>
 
             </div>
             <div class="form-group">

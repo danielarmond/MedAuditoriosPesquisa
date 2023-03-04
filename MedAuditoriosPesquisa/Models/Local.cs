@@ -22,14 +22,12 @@ namespace MedAuditoriosPesquisa.Models
         public int PeDireito { get; set; }
         [Display(Name = "Tipo de Cadeira")]
         public TipoCadeira TipoCadeira { get; set; }
-        [Required]
         [Display(Name = "Status Primário")]
-        public StatusPrimario StatusPrimario { get; set; }
+        public StatusPrimario? StatusPrimario { get; set; }
         [Required]
         public int StatusPrimarioId { get; set; }
-        [Required]
         [Display(Name = "Status Secundário")]
-        public StatusSecundario StatusSecundario { get; set; }
+        public StatusSecundario? StatusSecundario { get; set; }
         [Required]
         public int StatusSecundarioId { get; set; }
         [Display(Name = "Observação")]

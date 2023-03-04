@@ -1,38 +1,41 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+using System.Xml.Linq;
 
 
 namespace MedAuditoriosPesquisa.Models.Enums
 {
     public enum TipoCadeira
     {
-        [Description("Acolchoada com prancheta")]
+        [Display(Name ="Acolchoada com prancheta")]
         AcolchoadaComPrancheta,
 
-        [Description("Acolchoada com mesa")]
+        [Display(Name = "Acolchoada com mesa")]
         AcolchoadaComMesa,
 
-        [Description("Acolchoada com braço")]
+        [Display(Name = "Acolchoada com braço")]
         AcolchoadaComBraco,
 
-        [Description("Acolchoada sem apoio")]
+        [Display(Name = "Acolchoada sem apoio")]
         AcolchoadaSemApoio,
 
-        [Description("Semi ou Não acolchoada com prancheta")]
+        [Display(Name = "Semi ou Não acolchoada com prancheta")]
         SemiOuNaoAcolchoadaComPrancheta,
 
-        [Description("Semi ou Não acolchoada com mesa")]
+        [Display(Name = "Semi ou Não acolchoada com mesa")]
         SemiOuNaoAcolchoadaComMesa,
 
-        [Description("Semi ou Não acolchoada com braço")]
+        [Display(Name = "Semi ou Não acolchoada com braço")]
         SemiOuNaoAcolchoadaComBraco,
 
-        [Description("Semi ou Não acolchoada sem apoio")]
+        [Display(Name = "Semi ou Não acolchoada sem apoio")]
         SemiOuNaoAcolchoadaSemApoio,
 
-        [Description("Não informado")]
+        [Display(Name = "Não informado")]
         NaoInformado,
 
-        [Description("Não possui")]
+        [Display(Name = "Não possui")]
         NaoPossui
     }
 }
