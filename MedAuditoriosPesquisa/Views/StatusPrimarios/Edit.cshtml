@@ -1,4 +1,4 @@
-﻿@model MedAuditoriosPesquisa.Models.StatusPrimario
+﻿@model MedAuditoriosPesquisa.Models.ViewModels.StatusPrimarioFormViewModel;
 
 @{
     ViewData["Title"] = "Edit";
@@ -13,11 +13,11 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="StatusPrimario.Id" />
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+                <label asp-for="StatusPrimario.Nome" class="control-label"></label>
+                <input asp-for="StatusPrimario.Nome" class="form-control" />
+                <span asp-validation-for="StatusPrimario.Nome" class="text-danger"></span>
             </div>
             <div style="width:500px;">
                 <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;" />Cancelar</a>

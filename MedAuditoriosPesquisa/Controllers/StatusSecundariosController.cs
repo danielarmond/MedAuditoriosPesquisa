@@ -1,156 +1,138 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MedAuditoriosPesquisa.Data;
 using MedAuditoriosPesquisa.Models;
+using MedAuditoriosPesquisa.Models.ViewModels;
+using MedAuditoriosPesquisa.Services.Exceptions;
+using MedAuditoriosPesquisa.Services;
+using System.Diagnostics;
 
 namespace MedAuditoriosPesquisa.Controllers
 {
     public class StatusSecundariosController : Controller
     {
-        private readonly MedAuditoriosPesquisaContext _context;
+        private readonly StatusSecundarioService _statusSecundarioService;
 
-        public StatusSecundariosController(MedAuditoriosPesquisaContext context)
+        public StatusSecundariosController(StatusSecundarioService statusSecundarioService)
         {
-            _context = context;
+            _statusSecundarioService = statusSecundarioService;
         }
 
-        // GET: StatusSecundarios
         public async Task<IActionResult> Index()
         {
-              return View(await _context.StatusSecundario.ToListAsync());
+            var list = await _statusSecundarioService.FindAllAsync();
+            return View(list);
         }
 
-        // GET: StatusSecundarios/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.StatusSecundario == null)
-            {
-                return NotFound();
-            }
-
-            var statusSecundario = await _context.StatusSecundario
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (statusSecundario == null)
-            {
-                return NotFound();
-            }
-
-            return View(statusSecundario);
-        }
-
-        // GET: StatusSecundarios/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
 
-        // POST: StatusSecundarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] StatusSecundario statusSecundario)
+        public async Task<IActionResult> Create(StatusSecundario statusSecundario)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(statusSecundario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View();
             }
-            return View(statusSecundario);
-        }
-
-        // GET: StatusSecundarios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.StatusSecundario == null)
-            {
-                return NotFound();
-            }
-
-            var statusSecundario = await _context.StatusSecundario.FindAsync(id);
-            if (statusSecundario == null)
-            {
-                return NotFound();
-            }
-            return View(statusSecundario);
-        }
-
-        // POST: StatusSecundarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] StatusSecundario statusSecundario)
-        {
-            if (id != statusSecundario.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(statusSecundario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StatusSecundarioExists(statusSecundario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(statusSecundario);
-        }
-
-        // GET: StatusSecundarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.StatusSecundario == null)
-            {
-                return NotFound();
-            }
-
-            var statusSecundario = await _context.StatusSecundario
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (statusSecundario == null)
-            {
-                return NotFound();
-            }
-
-            return View(statusSecundario);
-        }
-
-        // POST: StatusSecundarios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.StatusSecundario == null)
-            {
-                return Problem("Entity set 'MedAuditoriosPesquisaContext.StatusSecundario'  is null.");
-            }
-            var statusSecundario = await _context.StatusSecundario.FindAsync(id);
-            if (statusSecundario != null)
-            {
-                _context.StatusSecundario.Remove(statusSecundario);
-            }
-            
-            await _context.SaveChangesAsync();
+            await _statusSecundarioService.InsertAsync(statusSecundario);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StatusSecundarioExists(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
-          return _context.StatusSecundario.Any(e => e.Id == id);
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+            }
+
+            var obj = await _statusSecundarioService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _statusSecundarioService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+            }
+
+            var obj = await _statusSecundarioService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+            }
+
+            return View(obj);
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+            }
+
+            var obj = await _statusSecundarioService.FindByIdAsync(id.Value);
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+            }
+            StatusSecundarioFormViewModel viewModel = new StatusSecundarioFormViewModel { StatusSecundario = obj };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, StatusSecundario statusSecundario)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (id != statusSecundario.Id)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
+            }
+            try
+            {
+                await _statusSecundarioService.UpdateAsync(statusSecundario);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ApplicationException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }

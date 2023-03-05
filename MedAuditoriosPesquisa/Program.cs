@@ -12,10 +12,9 @@ builder.Services.AddScoped<StatusPrimarioService>();
 builder.Services.AddScoped<StatusSecundarioService>();
 builder.Services.AddScoped<ContatoService>();
 builder.Services.AddScoped<LocalService>();
-
+builder.Services.AddScoped<UsuarioService>();
 
 builder.Services.AddRazorPages();
-
 
 var app = builder.Build();
 

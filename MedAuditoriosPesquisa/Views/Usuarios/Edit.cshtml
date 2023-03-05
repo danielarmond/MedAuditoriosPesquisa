@@ -1,4 +1,4 @@
-﻿@model MedAuditoriosPesquisa.Models.Usuario
+﻿@model MedAuditoriosPesquisa.Models.ViewModels.UsuarioFormViewModel
 @using MedAuditoriosPesquisa.Models.Enums;
 
 @{
@@ -12,29 +12,29 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Usuario.Id" />
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+                <label asp-for="Usuario.Nome" class="control-label"></label>
+                <input asp-for="Usuario.Nome" class="form-control" />
+                <span asp-validation-for="Usuario.Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Funcao" class="control-label"></label>
-                <select asp-for="Funcao" class="form-select" asp-items="Html.GetEnumSelectList<Funcao>()">
+                <label asp-for="Usuario.Funcao" class="control-label"></label>
+                <select asp-for="Usuario.Funcao" class="form-select" asp-items="Html.GetEnumSelectList<Funcao>()">
                     class="form-control"
                     <option selected="selected" value="">Selecione a Função</option>
                 </select>
-                <span asp-validation-for="Funcao" class="text-danger"></span>
+                <span asp-validation-for="Usuario.Funcao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="Usuario.Email" class="control-label"></label>
+                <input asp-for="Usuario.Email" class="form-control" />
+                <span asp-validation-for="Usuario.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
+                <label asp-for="Usuario.Senha" class="control-label"></label>
+                <input asp-for="Usuario.Senha" class="form-control" />
+                <span asp-validation-for="Usuario.Senha" class="text-danger"></span>
             </div>
             <div style="width:500px;">
                 <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;" />Cancelar</a>
