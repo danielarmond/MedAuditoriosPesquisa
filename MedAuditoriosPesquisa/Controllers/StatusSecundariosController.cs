@@ -43,13 +43,13 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
             var obj = await _statusSecundarioService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não localizado" });
             }
 
             return View(obj);
@@ -74,13 +74,13 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
             var obj = await _statusSecundarioService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não localizado" });
             }
 
             return View(obj);
@@ -90,13 +90,13 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
             }
 
             var obj = await _statusSecundarioService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não localizado" });
             }
             StatusSecundarioFormViewModel viewModel = new StatusSecundarioFormViewModel { StatusSecundario = obj };
             return View(viewModel);
@@ -112,7 +112,7 @@ namespace MedAuditoriosPesquisa.Controllers
             }
             if (id != statusSecundario.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
+                return RedirectToAction(nameof(Error), new { message = "Id diferente" });
             }
             try
             {

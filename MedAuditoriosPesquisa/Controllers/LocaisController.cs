@@ -55,13 +55,13 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não foi fornecido" });
             }
 
             var obj = await _localService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não localizado" });
             }
 
             return View(obj);
@@ -86,13 +86,13 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não foi fornecido" });
             }
 
             var obj = await _localService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não localizado" });
             }
 
             return View(obj);
@@ -102,13 +102,13 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
+                return RedirectToAction(nameof(Error), new { message = "Id não foi fornecido" });
             }
 
             var obj = await _localService.FindByIdAsync(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id not found" });
+                return RedirectToAction(nameof(Error), new { message = "Id não localizado" });
             }
 
             List<StatusPrimario> statusPrimarios = await _statusPrimarioService.FindAllAsync();
@@ -131,7 +131,7 @@ namespace MedAuditoriosPesquisa.Controllers
             }
             if (id != local.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
+                return RedirectToAction(nameof(Error), new { message = "Id diferente" });
             }
             try
             {
