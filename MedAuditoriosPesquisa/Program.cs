@@ -13,6 +13,9 @@ builder.Services.AddScoped<StatusSecundarioService>();
 builder.Services.AddScoped<ContatoService>();
 builder.Services.AddScoped<LocalService>();
 builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddRazorPages();
 
@@ -25,6 +28,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
