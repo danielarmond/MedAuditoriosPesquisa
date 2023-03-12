@@ -13,6 +13,9 @@ builder.Services.AddScoped<StatusSecundarioService>();
 builder.Services.AddScoped<ContatoService>();
 builder.Services.AddScoped<LocalService>();
 builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<FilialService>();
+
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

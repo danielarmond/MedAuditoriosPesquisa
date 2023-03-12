@@ -20,5 +20,8 @@ namespace MedAuditoriosPesquisa.Data
 
         public DbSet<StatusSecundario> StatusSecundario { get; set; }
 
+        public DbSet<Filial> Filial { get; set; }
+
+
     }
 }

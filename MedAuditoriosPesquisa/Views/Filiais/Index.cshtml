@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MedAuditoriosPesquisa.Models.Filial>
+
+@{
+    ViewData["Title"] = "Filial";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+
+<h3>Filial</h3>
+
+<div class="col-3">
+    <a class="btn btn-success" style="margin:15px;" a asp-action="Create">Criar Novo</a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="table-secondary">
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

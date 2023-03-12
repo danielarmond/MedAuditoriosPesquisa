@@ -1,33 +1,30 @@
 ﻿using MedAuditoriosPesquisa.Data;
 using MedAuditoriosPesquisa.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
 using MedAuditoriosPesquisa.Services.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedAuditoriosPesquisa.Services
 {
-    public class LocalService
+    public class FilialService
     {
         private readonly MedAuditoriosPesquisaContext _context;
 
-        public LocalService(MedAuditoriosPesquisaContext context)
+        public FilialService(MedAuditoriosPesquisaContext context)
         {
             _context = context;
         }
 
-        
-        public async Task<List<Local>> FindAllAsync()
+        public async Task<List<Filial>> FindAllAsync()
         {
-            return await _context.Local.Include(obj => obj.StatusPrimario).Include(obj => obj.StatusSecundario).Include(obj => obj.Filial).OrderBy(x => x.Nome).ToListAsync();
+            return await _context.Filial.OrderBy(x => x.Nome).ToListAsync();
         }
 
-       
-        public async Task<Local> FindByIdAsync(int id)
+        public async Task<Filial> FindByIdAsync(int id)
         {
-            return await _context.Local.Include(obj => obj.StatusPrimario).Include(obj => obj.StatusSecundario).Include(obj => obj.Filial).FirstOrDefaultAsync(obj => obj.Id == id);
+            return await _context.Filial.FirstOrDefaultAsync(obj => obj.Id == id);
         }
 
-        public async Task InsertAsync(Local obj)
+        public async Task InsertAsync(Filial obj)
         {
             _context.Add(obj);
             await _context.SaveChangesAsync();
@@ -38,8 +35,8 @@ namespace MedAuditoriosPesquisa.Services
         {
             try
             {
-                var obj = await _context.Local.FindAsync(id);
-                _context.Local.Remove(obj);
+                var obj = await _context.Filial.FindAsync(id);
+                _context.Filial.Remove(obj);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException dbUpdateException)
@@ -48,9 +45,9 @@ namespace MedAuditoriosPesquisa.Services
             }
         }
 
-        public async Task UpdateAsync(Local obj)
+        public async Task UpdateAsync(Filial obj)
         {
-            bool hasAny = await _context.Local.AnyAsync(x => x.Id == obj.Id);
+            bool hasAny = await _context.Filial.AnyAsync(x => x.Id == obj.Id);
             if (!hasAny)
             {
                 throw new NotFoundException("Id não encontrado");
@@ -65,6 +62,5 @@ namespace MedAuditoriosPesquisa.Services
                 throw new DbConcurrencyException(e.Message);
             }
         }
-
     }
 }

@@ -8,8 +8,9 @@ namespace MedAuditoriosPesquisa.Models
         [Key]
         [Required]
         public int Id { get; set; }
+        public Filial? Filial { get; set; }
         [Required]
-        public string Filial { get; set; }
+        public int FilialId { get; set; }
         [Required]
         [Display(Name = "Local")]
         public string Nome { get; set; }
@@ -42,7 +43,7 @@ namespace MedAuditoriosPesquisa.Models
         {
         }
 
-        public Local(string filial, string nome, DateTime dataInteracao, int capacidade, int peDireito, 
+        public Local(Filial filial, string nome, DateTime dataInteracao, int capacidade, int peDireito, 
             TipoCadeira tipoCadeira, StatusPrimario statusPrimario, StatusSecundario statusSecundario, 
             string observacao, string linkVisita, string urlImagem)
         {

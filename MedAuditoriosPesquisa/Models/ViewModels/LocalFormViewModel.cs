@@ -6,6 +6,7 @@
         public ICollection<StatusPrimario> StatusPrimarios { get; set; }
         public ICollection<StatusSecundario> StatusSecundarios { get; set; }
         public ICollection<Contato> Contatos { get; set; }
+        public ICollection<Filial> Filiais { get; set; }
 
     }
 }

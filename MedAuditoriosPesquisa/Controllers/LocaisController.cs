@@ -11,14 +11,17 @@ namespace MedAuditoriosPesquisa.Controllers
     {
         private readonly StatusPrimarioService _statusPrimarioService;
         private readonly StatusSecundarioService _statusSecundarioService;
+        private readonly FilialService _filialService;
+
         private readonly LocalService _localService;
 
 
-        public LocaisController(StatusSecundarioService statusSecundarioService, StatusPrimarioService statusPrimarioService, LocalService localService)
+        public LocaisController(StatusSecundarioService statusSecundarioService, StatusPrimarioService statusPrimarioService, LocalService localService, FilialService filialService)
         {
             _statusSecundarioService = statusSecundarioService;
             _statusPrimarioService = statusPrimarioService;
-            _localService= localService;
+            _localService = localService;
+            _filialService = filialService;
         }
 
         public async Task<IActionResult> Index()
@@ -31,7 +34,9 @@ namespace MedAuditoriosPesquisa.Controllers
         {
             var statusPrimarios = await _statusPrimarioService.FindAllAsync();
             var statusSecundarios = await _statusSecundarioService.FindAllAsync();
-            var viewModel = new LocalFormViewModel { StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios};
+            var filiais = await _filialService.FindAllAsync();
+
+            var viewModel = new LocalFormViewModel { StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios, Filiais = filiais};
             return View(viewModel);
         }
 
@@ -43,8 +48,9 @@ namespace MedAuditoriosPesquisa.Controllers
             {
                 var statusPrimarios = await _statusPrimarioService.FindAllAsync();
                 var statusSecundarios = await _statusSecundarioService.FindAllAsync();
+                var filiais = await _filialService.FindAllAsync();
 
-                var viewModel = new LocalFormViewModel { Local = local, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios };
+                var viewModel = new LocalFormViewModel { Local = local, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios, Filiais = filiais };
                 return View(viewModel);
             }
             await _localService.InsertAsync(local);
@@ -113,8 +119,10 @@ namespace MedAuditoriosPesquisa.Controllers
 
             List<StatusPrimario> statusPrimarios = await _statusPrimarioService.FindAllAsync();
             List<StatusSecundario> statusSecundarios = await _statusSecundarioService.FindAllAsync();
+            List<Filial> filiais = await _filialService.FindAllAsync();
 
-            LocalFormViewModel viewModel = new LocalFormViewModel { Local = obj, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios };
+
+            LocalFormViewModel viewModel = new LocalFormViewModel { Local = obj, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios, Filiais = filiais };
             return View(viewModel);
         }
 
@@ -126,7 +134,9 @@ namespace MedAuditoriosPesquisa.Controllers
             {
                 var statusPrimarios = await _statusPrimarioService.FindAllAsync();
                 var statusSecundarios = await _statusSecundarioService.FindAllAsync();
-                var viewModel = new LocalFormViewModel { Local = local, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios };
+                var filiais = await _filialService.FindAllAsync();
+
+                var viewModel = new LocalFormViewModel { Local = local, StatusPrimarios = statusPrimarios, StatusSecundarios = statusSecundarios, Filiais = filiais };
                 return View(viewModel);
             }
             if (id != local.Id)

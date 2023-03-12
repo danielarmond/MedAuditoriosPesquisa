@@ -1,0 +1,32 @@
+﻿@model MedAuditoriosPesquisa.Models.ViewModels.FilialFormViewModel;
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+
+
+<h3>Novo</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Filial.Id" />
+            <div class="form-group">
+                <label asp-for="Filial.Nome" class="control-label"></label>
+                <input asp-for="Filial.Nome" class="form-control" />
+                <span asp-validation-for="Filial.Nome" class="text-danger"></span>
+            </div>
+            <div style="width:500px;">
+                <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;" />Cancelar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" style="margin:5px;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
