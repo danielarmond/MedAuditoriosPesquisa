@@ -6,7 +6,7 @@
 }
 
 <div class="container">  
-    <img src="./img/banner_locais.png" class="img-fluid" alt="">
+    <img src="./img/banner_usuarios.png" class="img-fluid" alt="">
  </div>
 
 <div class="col-3">
@@ -47,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.Senha)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                    <a class="badge rounded-pill bg-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="badge rounded-pill bg-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="badge rounded-pill bg-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
             </td>
         </tr>
 }
