@@ -10,6 +10,7 @@ namespace MedAuditoriosPesquisa.Models
         public int Id { get; set; }
         public Filial? Filial { get; set; }
         [Required]
+        [Display(Name = "Filial")]
         public int FilialId { get; set; }
         [Required]
         [Display(Name = "Local")]
@@ -38,14 +39,20 @@ namespace MedAuditoriosPesquisa.Models
         public string LinkVisita { get; set; }
         [Display(Name = "Imagem")]
         public string UrlImagem  {get; set; }
+        [Display(Name = "Nome Contato")]
+        public string NomeContato { get; set; }
+        [Display(Name = "Telefone Contato")]
+        public int TelefoneContato { get; set; }
+        [Display(Name = "Email Contato")]
+        public string EmailContato { get; set; }
 
-    public Local()
+        public Local()
         {
         }
 
         public Local(Filial filial, string nome, DateTime dataInteracao, int capacidade, int peDireito, 
             TipoCadeira tipoCadeira, StatusPrimario statusPrimario, StatusSecundario statusSecundario, 
-            string observacao, string linkVisita, string urlImagem)
+            string observacao, string linkVisita, string urlImagem, string nomeContato, int telefoneContato, string emailContato)
         {
             Filial = filial;
             Nome = nome;
@@ -58,6 +65,9 @@ namespace MedAuditoriosPesquisa.Models
             Observacao = observacao;
             LinkVisita = linkVisita;
             UrlImagem = urlImagem;
+            NomeContato = nomeContato;
+            TelefoneContato = telefoneContato;
+            EmailContato = emailContato;
         }
     }
 }

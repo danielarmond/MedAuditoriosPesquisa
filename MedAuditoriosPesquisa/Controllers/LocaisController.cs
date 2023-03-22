@@ -12,7 +12,6 @@ namespace MedAuditoriosPesquisa.Controllers
         private readonly StatusPrimarioService _statusPrimarioService;
         private readonly StatusSecundarioService _statusSecundarioService;
         private readonly FilialService _filialService;
-
         private readonly LocalService _localService;
 
 

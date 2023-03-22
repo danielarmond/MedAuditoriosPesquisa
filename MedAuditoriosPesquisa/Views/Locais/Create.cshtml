@@ -9,7 +9,8 @@
 
 
 <h3> Novo Local</h3>
-<hr />
+
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -67,10 +68,21 @@
                 <label asp-for="Local.Observacao" class="control-label"></label>
                 <textarea asp-for="Local.Observacao" class="form-control" rows="4"></textarea>
             </div>
-
+            <div class="form-group">
+                <label asp-for="Local.NomeContato" class="control-label"></label>
+                <input asp-for="Local.NomeContato" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Local.TelefoneContato" class="control-label"></label>
+                <input asp-for="Local.TelefoneContato" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Local.EmailContato" class="control-label"></label>
+                <input asp-for="Local.EmailContato" class="form-control" />
+            </div>
 
             <div style="width:500px;">
-                <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;" />Cancelar</a>
+                <a asp-action="Index" value="Cancelar" class="btn btn-danger" style="margin:5px;">Cancelar</a>
                 <input type="submit" value="Salvar" class="btn btn-primary" style="margin:5px;" />
             </div>
         </form>
