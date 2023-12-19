@@ -69,5 +69,26 @@ namespace MedAuditoriosPesquisa.Models
             TelefoneContato = telefoneContato;
             EmailContato = emailContato;
         }
+
+        public Local(int id, Filial filial, string nome, DateTime dataInteracao, int capacidade, int peDireito,
+            TipoCadeira tipoCadeira, StatusPrimario statusPrimario, StatusSecundario statusSecundario,
+            string observacao, string linkVisita, string urlImagem, string nomeContato, int telefoneContato, string emailContato)
+        {
+            Id = id;
+            Filial = filial;
+            Nome = nome;
+            DataInteracao = dataInteracao;
+            Capacidade = capacidade;
+            PeDireito = peDireito;
+            TipoCadeira = tipoCadeira;
+            StatusPrimario = statusPrimario;
+            StatusSecundario = statusSecundario;
+            Observacao = observacao;
+            LinkVisita = linkVisita;
+            UrlImagem = urlImagem;
+            NomeContato = nomeContato;
+            TelefoneContato = telefoneContato;
+            EmailContato = emailContato;
+        }
     }
 }

@@ -10,5 +10,11 @@ namespace MedAuditoriosPesquisa.Models
     [Required]
         [Display(Name = "Status Secundário")]
         public string Nome { get; set; }
-}
+
+        public StatusSecundario(int id, string nome)
+        {
+            Id = id;
+            Nome = nome;
+        }
+    }
 }

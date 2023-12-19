@@ -17,5 +17,16 @@ namespace MedAuditoriosPesquisa.Models
         public string Email { get; set; }
         [Required]
         public string Senha { get; set; }
+
+        public Usuario(int id, string nome, Funcao funcao, string email, string senha)
+        {
+            Id = id;
+            Nome = nome;
+            Funcao = funcao;
+            Email = email;
+            Senha = senha;
+        }
     }
+
+
 }
