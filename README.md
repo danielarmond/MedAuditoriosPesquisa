@@ -4,7 +4,7 @@
 
 * c#
 
-* .NET 6.0
+* .NET 8.0
 
 * ASP.NET Core
 
@@ -12,7 +12,7 @@
 
 * Razor
 
-* MySql
+* SQL Server
 
 <h2>Como executar a aplicação:</h2>
 
