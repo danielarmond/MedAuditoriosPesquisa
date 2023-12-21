@@ -18,7 +18,7 @@
 
 * Baixe ou clone a pasta do projeto;
 
-* No MySQL, criar o schema "medauditoriospesquisa". (porta 3306, user: root, password:root);
+* No SQL Server, criar o banco de dados "medauditoriospesquisa";
 
 * Na pasta raiz do projeto, executar no terminal o comando "dotnet ef database update --project MedAuditoriosPesquisa";
 
