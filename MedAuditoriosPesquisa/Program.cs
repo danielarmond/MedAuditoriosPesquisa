@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("MedAuditoriosPesquisaContext");
 builder.Services.AddDbContext<MedAuditoriosPesquisaContext>(opts =>
-opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+opts.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<StatusPrimarioService>();
 builder.Services.AddScoped<StatusSecundarioService>();

@@ -26,6 +26,10 @@ namespace MedAuditoriosPesquisa.Models
             Email = email;
             Senha = senha;
         }
+
+        public Usuario() 
+        {
+        }
     }
 
 

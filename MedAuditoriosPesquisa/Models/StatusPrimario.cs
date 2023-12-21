@@ -16,5 +16,9 @@ namespace MedAuditoriosPesquisa.Models
             Id = id;
             Nome = nome;
         }
+
+        public StatusPrimario()
+        {
+        }
     }
 }
