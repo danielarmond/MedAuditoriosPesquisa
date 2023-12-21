@@ -18,7 +18,7 @@
 
 * Baixe ou clone a pasta do projeto;
 
-* No SQL Server, criar o banco de dados "medauditoriospesquisa";
+* No SQL Server, criar o banco de dados "medauditoriospesquisa" no servidor "NOTEDANI";
 
 * Na pasta raiz do projeto, executar no terminal o comando "dotnet ef database update --project MedAuditoriosPesquisa";
 
