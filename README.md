@@ -4,7 +4,7 @@
 
 * c#
 
-* .NET 6.0
+* .NET 8.0
 
 * ASP.NET Core
 
@@ -12,13 +12,13 @@
 
 * Razor
 
-* MySql
+* SQL Server
 
 <h2>Como executar a aplicação:</h2>
 
 * Baixe ou clone a pasta do projeto;
 
-* No MySQL, criar o schema "medauditoriospesquisa". (porta 3306, user: root, password:root);
+* No SQL Server, criar o banco de dados "medauditoriospesquisa" no servidor "NOTEDANI";
 
 * Na pasta raiz do projeto, executar no terminal o comando "dotnet ef database update --project MedAuditoriosPesquisa";
 
