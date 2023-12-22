@@ -4,9 +4,11 @@ using MedAuditoriosPesquisa.Services;
 using System.Diagnostics;
 using MedAuditoriosPesquisa.Services.Exceptions;
 using MedAuditoriosPesquisa.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MedAuditoriosPesquisa.Controllers
 {
+    [Authorize]
     public class LocaisController : Controller
     {
         private readonly StatusPrimarioService _statusPrimarioService;

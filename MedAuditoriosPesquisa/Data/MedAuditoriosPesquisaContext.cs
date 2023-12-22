@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MedAuditoriosPesquisa.Models;
 using MedAuditoriosPesquisa.Mappings;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MedAuditoriosPesquisa.Data
 {
-    public class MedAuditoriosPesquisaContext : DbContext
+    public class MedAuditoriosPesquisaContext : IdentityDbContext
     {
         public MedAuditoriosPesquisaContext(DbContextOptions<MedAuditoriosPesquisaContext> options)
            : base(options)
@@ -18,6 +19,9 @@ namespace MedAuditoriosPesquisa.Data
             modelBuilder.ApplyConfiguration(new StatusSecundarioMap());
             modelBuilder.ApplyConfiguration(new FilialMap());
             modelBuilder.ApplyConfiguration(new LocalMap());
+
+            base.OnModelCreating(modelBuilder);
+
 
         }
 

@@ -4,9 +4,11 @@ using MedAuditoriosPesquisa.Services.Exceptions;
 using MedAuditoriosPesquisa.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MedAuditoriosPesquisa.Controllers
 {
+    [Authorize]
     public class FiliaisController : Controller
     {
         private readonly FilialService _filialService;

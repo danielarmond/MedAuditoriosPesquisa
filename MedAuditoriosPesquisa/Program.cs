@@ -1,12 +1,15 @@
 using MedAuditoriosPesquisa.Data;
 using MedAuditoriosPesquisa.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("MedAuditoriosPesquisaContext");
 builder.Services.AddDbContext<MedAuditoriosPesquisaContext>(opts =>
 opts.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MedAuditoriosPesquisaContext>();
 
 builder.Services.AddScoped<StatusPrimarioService>();
 builder.Services.AddScoped<StatusSecundarioService>();
