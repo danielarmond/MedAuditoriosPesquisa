@@ -9,7 +9,9 @@ var connectionString = builder.Configuration.GetConnectionString("MedAuditoriosP
 builder.Services.AddDbContext<MedAuditoriosPesquisaContext>(opts =>
 opts.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MedAuditoriosPesquisaContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddDefaultTokenProviders().AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<MedAuditoriosPesquisaContext>();
 
 builder.Services.AddScoped<StatusPrimarioService>();
 builder.Services.AddScoped<StatusSecundarioService>();
